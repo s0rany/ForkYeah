@@ -1,70 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="manifest" href="pwa-manifest.json">
-    <meta name="theme-color" content="#F2665E">
-    
-    <link rel="icon" href="icons/fork-yeah-icon-192.png">
-    <link rel="apple-touch-icon" href="icons/fork-yeah-icon-192.png">
+  <link rel="manifest" href="pwa-manifest.json">
+  <meta name="theme-color" content="#E8192C">
+  <link rel="icon" href="icons/fork-yeah-icon-192.png">
+  <link rel="apple-touch-icon" href="icons/fork-yeah-icon-192.png">
 
-    <title>ForkYeah</title>
-    
-    <link rel="stylesheet" href="css/style.css">
+  <title>ForkYeah</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 
+  <!-- Leaflet JS must load globally before the map component -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-
-
-
-    <!-- THIS IS WHERE YOU CALL THE COMPONENTS -->
+  <!-- Web Components -->
   <script type="module" src="js/forkyeah-navbar.js"></script>
-  <script type="module" src="js/forkyeah-searchbar.js"></script>
-  <script type="module" src="js/forkyeah-infocard.js"></script>
   <script type="module" src="js/forkyeah-map.js"></script>
 </head>
 
-
 <body>
 
-  <!-- THEN THIS IS PLACEMENT FOR THE COMPONENTS -->
-  <forkyeah-navbar></forkyeah-navbar>
-  <forkyeah-searchbar></forkyeah-searchbar>
-  <forkyeah-infocard></forkyeah-infocard>
-  <forkyeah-map></forkyeah-map>
+  <!-- ── Tiled background wallpaper ── -->
+  <div id="bg"></div>
+
+  <!-- ══════════════════════════════════════════════
+       PAGE 01 — EXPLORE NYC
+  ══════════════════════════════════════════════ -->
+  <section class="page-card">
+    <forkyeah-navbar></forkyeah-navbar>
+
+    <div class="content">
+      <div class="header-row">
+        <div class="header-left">
+          <div class="title-block"><h1>EXPLORE NYC</h1></div>
+          <div class="sub-block" style="margin-top:7px"><p>TASTE THE WORLD</p></div>
+        </div>
+        <div class="page-num">
+          <span class="n">01</span>
+          <span class="p">PAGE</span>
+        </div>
+      </div>
+
+      <div class="divider">
+        <div class="dash"></div>
+        <div class="fork-dot">🍴</div>
+        <div class="dash"></div>
+      </div>
+
+      <!-- NYC Map — actual interactive Leaflet map -->
+      <div class="map-wrapper">
+        <forkyeah-map></forkyeah-map>
+      </div>
+
+      <!-- World Map — placeholder box matching Figma -->
+      <div class="map-placeholder">
+        <span>WORLD MAP</span>
+      </div>
+    </div>
+  </section>
 
 
-  <!-- Searchbar javascript logic -->
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const searchbar = document.querySelector('forkyeah-searchbar');
+  <!-- ══════════════════════════════════════════════
+       PAGE 02 — FEATURED BITES
+  ══════════════════════════════════════════════ -->
+  <section class="page-card">
+    <forkyeah-navbar></forkyeah-navbar>
 
-    if (searchbar) {
-      searchbar.addEventListener('search-changed', e => {
-        console.log('Query changed:', e.detail.query);
-      });
+    <div class="content">
+      <div class="header-row">
+        <div class="header-left">
+          <div class="title-block"><h1>FEATURED BITES</h1></div>
+          <div class="sub-block" style="margin-top:7px"><p>WE RECOMMEND EATING THESE!</p></div>
+          <div class="loc-badge">NEW YORK CITY</div>
+        </div>
+        <div class="page-num">
+          <span class="n">02</span>
+          <span class="p">PAGE</span>
+        </div>
+      </div>
 
-      searchbar.addEventListener('search-submit', e => {
-        console.log('Search submitted:', e.detail.query);
-      });
-    }
-  });
-</script>
+      <div class="divider">
+        <div class="dash"></div>
+        <div class="fork-dot">🍴</div>
+        <div class="dash"></div>
+      </div>
+
+      <!-- Restaurant rows with JS-drawn connector lines -->
+      <div class="restaurants">
+
+        <!-- photo 1 -->
+        <div class="r-row row-right" id="r1">
+          <div class="r-photo">
+            <img src="https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/da61538c3d3043948769f77066696cf0.jpg?w=1200&h=1200&org_if_sml=1"alt="Comal resturant in New York City"> 
+          </div>
+          <div class="r-label">COMAL <span class="r-arr">▶</span></div>
+        </div>
+
+        <!-- photo 2 -->
+        <div class="r-row row-left" id="r2">
+          <div class="r-photo">
+            <img src="https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/50638a3d4a8e4405acc0ade451b10a38.jpeg?w=900&h=900&org_if_sml=1" alt="Cafe Boulud in New York City">
+          </div>
+          <div class="r-label"><span class="r-arr">◀</span> CAFE BOULUD</div>
+        </div>
+
+        <!-- photo 3 -->
+        <div class="r-row row-right" id="r3">
+          <div class="r-photo">
+            <img src="https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/415bba3551414e04b6793383d28c0b6c.jpeg?w=900&h=900&org_if_sml=1" alt="Sushi Nakazawa in New York City">
+          </div>
+          <div class="r-label">SUSHI NAKAZAWA <span class="r-arr">▶</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 
-<main>
-  </main>
+  <!-- ══════════════════════════════════════════════
+       PAGE 03 — FEATURED COUNTRY: UZBEKISTAN
+  ══════════════════════════════════════════════ -->
+  <section class="page-card">
+    <forkyeah-navbar></forkyeah-navbar>
 
+    <div class="content">
+      <div class="header-row">
+        <div class="header-left">
+          <div class="title-block"><h1>FEATURED COUNTRY</h1></div>
+          <div class="title-block" style="margin-top:6px"><h1>UZBEKISTAN</h1></div>
+        </div>
+        <div class="page-num">
+          <span class="n">03</span>
+          <span class="p">PAGE</span>
+        </div>
+      </div>
+
+      <div class="divider">
+        <div class="dash"></div>
+        <div class="fork-dot">🍴</div>
+        <div class="dash"></div>
+      </div>
+
+      <!-- Globe with surrounding info labels -->
+      <div class="globe-section">
+        <div class="globe-col-labels">
+          <div class="g-label">CUISINE <span class="r-arr">▶</span></div>
+          <div class="g-label">POPULATION <span class="r-arr">▶</span></div>
+        </div>
+
+        <div class="globe">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Uzbekistan_%28centered_orthographic_projection%29.svg/250px-Uzbekistan_%28centered_orthographic_projection%29.svg.png" alt="Uzbekistan on the globe">
+        </div>
+
+        <div class="globe-col-labels globe-col-right">
+          <div class="g-label"><span class="r-arr">◀</span> RELIGIONS</div>
+          <div class="g-label"><span class="r-arr">◀</span> LANGUAGES</div>
+        </div>
+      </div>
+
+      <!-- Dotted divider before cards -->
+      <div class="divider" style="margin: 20px 0 18px;">
+        <div class="dash"></div>
+        <div class="fork-dot" style="font-size:11px; letter-spacing:0">✦</div>
+        <div class="dash"></div>
+      </div>
+
+      <!-- Restaurant cards -->
+      <div class="restaurant-cards">
+
+        <div class="rest-card">
+          <div class="rest-card-photo">
+            <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80" alt="Farida">
+          </div>
+          <div class="rest-card-actions">
+            <button class="pill-btn"><span class="pill-dot"></span> info</button>
+            <button class="pill-btn"><span class="pill-dot"></span> menu</button>
+          </div>
+          <div class="rest-card-name">FARIDA</div>
+          <div class="rest-card-addr">32 CEDAR ST, NEW YORK</div>
+        </div>
+
+        <div class="rest-card">
+          <div class="rest-card-photo">
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80" alt="Urgut Dish Markazi">
+          </div>
+          <div class="rest-card-actions">
+            <button class="pill-btn"><span class="pill-dot"></span> info</button>
+            <button class="pill-btn"><span class="pill-dot"></span> menu</button>
+          </div>
+          <div class="rest-card-name">URGUT DISH MARKAZI</div>
+          <div class="rest-card-addr">BIG CONEY ISLAND AVE, BROOKLYN</div>
+        </div>
+
+      </div>
+
+      <!-- View More button -->
+      <div class="view-more-btn">
+        <span>✦</span> VIEW MORE UZBEKISTAN RESTAURANTS HERE <span>✦</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── Service Worker ── -->
   <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(() => console.log("Service Worker Registered"))
-      .catch(err => console.error("SW failed:", err));
-  }
-</script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch(err => console.error('SW failed:', err));
+    }
+  </script>
+
+  <!-- ── Background wallpaper ── -->
+  <script>
+    (function () {
+      const bg   = document.getElementById('bg');
+      const vw   = Math.max(window.innerWidth, 1200);
+
+      const words = [
+        { t: 'FORK',                   s: 110, w: 900 },
+        { t: 'YEAH!',                  s: 90,  w: 900 },
+        { t: "WHAT'S ON",              s: 36,  w: 700 },
+        { t: 'YOUR PLATE?',            s: 36,  w: 700 },
+        { t: 'PLATE',                  s: 68,  w: 900 },
+        { t: 'TASTE THE',              s: 38,  w: 700 },
+        { t: 'WORLD',                  s: 58,  w: 900 },
+        { t: 'FORK YEAH!',             s: 54,  w: 900 },
+        { t: "WHAT'S ON YOUR PLATE?",  s: 30,  w: 700 },
+        { t: 'TASTE THE WORLD',        s: 34,  w: 800 },
+        { t: '¡HⱯƏΛ',                 s: 90,  w: 900 },
+        { t: 'THE WORLD',              s: 44,  w: 800 },
+        { t: 'YEA',                    s: 80,  w: 900 },
+      ];
+
+      // Tile over a tall area to cover all 3 pages
+      const COLS = 6, ROWS = 18;
+      const cw = vw / COLS;
+      const ch = 220; // fixed row height
+      let idx = 0;
+
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          if (Math.random() < 0.1) continue;
+          const item = words[idx++ % words.length];
+          const el   = document.createElement('div');
+          el.className    = 'bw';
+          el.textContent  = item.t;
+          el.style.fontSize   = item.s + 'px';
+          el.style.fontWeight = item.w;
+
+          const jx = (Math.random() - 0.5) * cw * 0.18;
+          const jy = (Math.random() - 0.5) * ch * 0.18;
+          el.style.left = (c * cw + jx) + 'px';
+          el.style.top  = (r * ch + jy) + 'px';
+
+          const rots = [0, 0, 0, 90, -90, 180];
+          const rot  = rots[Math.floor(Math.random() * rots.length)];
+          if (rot) el.style.transform = `rotate(${rot}deg)`;
+
+          bg.appendChild(el);
+        }
+      }
+    }());
+  </script>
+
+  <!-- ── Connector lines for Page 02 restaurant rows ── -->
+  <script>
+    function drawConnector(rowEl, labelEl, photoEl, labelOnLeft) {
+      const rr = rowEl.getBoundingClientRect();
+      const lr = labelEl.getBoundingClientRect();
+      const pr = photoEl.getBoundingClientRect();
+
+      const lineY = lr.top + lr.height / 2 - rr.top;
+
+      const line = document.createElement('div');
+      line.className   = 'r-line';
+      line.style.top   = lineY + 'px';
+
+      const dot  = document.createElement('div');
+      dot.className    = 'r-dot';
+      dot.style.top    = lineY + 'px';
+
+      if (labelOnLeft) {
+        const x1 = lr.right - rr.left;
+        const x2 = pr.left  - rr.left;
+        line.style.left  = x1 + 'px';
+        line.style.width = Math.max(0, x2 - x1) + 'px';
+        dot.style.left   = x2 + 'px';
+      } else {
+        const x1 = pr.right - rr.left;
+        const x2 = lr.left  - rr.left;
+        line.style.left  = x1 + 'px';
+        line.style.width = Math.max(0, x2 - x1) + 'px';
+        dot.style.left   = x1 + 'px';
+      }
+
+      rowEl.appendChild(line);
+      rowEl.appendChild(dot);
+    }
+
+    window.addEventListener('load', () => {
+      requestAnimationFrame(() => {
+        [
+          { id: 'r1', labelOnLeft: true  },
+          { id: 'r2', labelOnLeft: false },
+          { id: 'r3', labelOnLeft: true  },
+        ].forEach(({ id, labelOnLeft }) => {
+          const row   = document.getElementById(id);
+          const label = row?.querySelector('.r-label');
+          const photo = row?.querySelector('.r-photo');
+          if (row && label && photo) drawConnector(row, label, photo, labelOnLeft);
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
