@@ -1,593 +1,798 @@
 /* ─────────────────────────────────────────────
-   FORKYEAH — Global Stylesheet
-   Font: Barlow Condensed (loaded in HTML head)
-   Primary: #E8192C  |  BG: #EFEFEF
+  FORKYEAH — Global Stylesheet
+  Font: Barlow Condensed (loaded in HTML head)
+  Primary: #E8192C  |  BG: #EFEFEF
 ───────────────────────────────────────────── */
 
+
 *, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
 }
+
 
 :root {
-  --red:  #ff0019;
-  --gray: #ffffff;
-  --font: 'Barlow Condensed', sans-serif;
-  --card-width: 760px;
+ --red:  #ff0019;
+ --gray: #ffffff;
+ --font: 'Barlow Condensed', sans-serif;
+ --card-width: 760px;       /* layout max — intentionally px */
+ --border-thick: 0.625rem;  /* 10px → scales with root font */
+ --border-mid:   0.5rem;    /* 8px  */
+ --border-thin:  0.25rem;   /* 4px  */
 }
+
 
 html, body {
-  font-family: var(--font);
-  background: #EFEFEF;
-  min-height: 100vh;
+ font-family: var(--font);
+ background: #EFEFEF;
+ min-height: 100vh;
 }
 
+
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px 60px;
-  gap: 36px;
-  position: relative;
-  overflow-x: hidden;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 2.5rem 1.25rem 3.75rem;
+ gap: 2.25rem;
+ position: relative;
+ overflow-x: hidden;
 }
+
 
 /* ─── Background wallpaper ────────────────── */
 #bg {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
+ position: fixed;
+ inset: 0;
+ pointer-events: none;
+ z-index: 0;
+ overflow: hidden;
 }
 
+
 .bw {
-  position: absolute;
-  font-family: var(--font);
-  font-weight: 900;
-  color: var(--gray);
-  text-transform: uppercase;
-  white-space: nowrap;
-  line-height: 1;
-  user-select: none;
+ position: absolute;
+ font-family: var(--font);
+ font-weight: 900;
+ color: var(--gray);
+ text-transform: uppercase;
+ white-space: nowrap;
+ line-height: 1;
+ user-select: none;
 }
+
 
 /* ─── Page card ───────────────────────────── */
 .page-card {
-  position: relative;
-  z-index: 1;
-  background: #fff;
-  border: 10px solid var(--red);
-  width: var(--card-width);
-  max-width: 100%;
+ position: relative;
+ z-index: 1;
+ background: #fff;
+ border: var(--border-thick) solid var(--red);
+ width: var(--card-width);
+ max-width: 100%;
 }
+
 
 /* ─── Content padding ─────────────────────── */
 .content {
-  padding: 22px 26px 30px;
+ padding: 1.375rem 1.625rem 1.875rem;
 }
+
 
 /* ─── Header row ──────────────────────────── */
 .header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+ margin-bottom: 0.75rem;
 }
+
 
 .title-block {
-  display: inline-block;
-  background: var(--red);
-  padding: 5px 13px 5px;
+ display: inline-block;
+ background: var(--red);
+ padding: 0.3125em 0.8125em;
 }
+
 
 .title-block h1 {
-  font-weight: 600;
-  font-size: 48px;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  line-height: 1;
+ font-weight: 600;
+ font-size: 3rem;
+ color: #fff;
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ line-height: 1;
 }
+
 
 .sub-block {
-  display: inline-block;
-  background: var(--red);
-  padding: 5px 13px 5px;
+ display: inline-block;
+ background: var(--red);
+ padding: 0.3125em 0.8125em;
 }
+
 
 .sub-block p {
-  font-weight: 600;
-  font-size: 48px;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1;
+ font-weight: 600;
+ font-size: 3rem;
+ color: #fff;
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
+ line-height: 1;
 }
 
 
-/* figure out this one */
 .loc-badge {
-  display: inline-block;
-  color: white;
-  font-weight: 600;
-  background-color: #ff0019;
-  font-size: 24px;
-  letter-spacing: 0.13em;
-  padding: 5px 13px 5px;
-  text-transform: uppercase;
-  margin-top: 4px;
+ display: inline-block;
+ color: white;
+ font-weight: 600;
+ background-color: #ff0019;
+ font-size: 1.5rem;
+ letter-spacing: 0.13em;
+ padding: 0.3125em 0.8125em;
+ text-transform: uppercase;
+ margin-top: 0.25rem;
 }
+
 
 .page-num {
-  text-align: center;
-  color: var(--red);
-  font-weight: 600;
-  line-height: 1;
-  padding-top: 8px;
-  flex-shrink: 0;
+ text-align: center;
+ color: var(--red);
+ font-weight: 600;
+ line-height: 1;
+ padding-top: 0.5rem;
+ flex-shrink: 0;
 }
+
 
 .page-num .n {
-  display: block;
-  font-size: 92px;
-  letter-spacing: -0.03em;
-  line-height: 0.88;
+ display: block;
+ font-size: 5.75rem;
+ letter-spacing: -0.03em;
+ line-height: 0.88;
 }
 
+
 .page-num .p {
-  display: block;
-  font-size: 20px;
-  letter-spacing: 0.35em;
-  font-weight: 800;
-  margin-top: 3px;
+ display: block;
+ font-size: 1.25rem;
+ letter-spacing: 0.35em;
+ font-weight: 800;
+ margin-top: 0.1875rem;
 }
+
 
 /* ─── Dashed divider ──────────────────────── */
 .divider {
-  display: flex;
-  align-items: center;
-  margin: 12px 0;
+ display: flex;
+ align-items: center;
+ margin: 0.75rem 0;
 }
+
 
 .dash {
-  flex: 1;
-  border-top: 10px dashed var(--red);
+ flex: 1;
+ border-top: var(--border-thick) dashed var(--red);
 }
 
+
 .fork-dot {
-  width: 32px;
-  height: 32px;
-  background: var(--red);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 14px;
-  flex-shrink: 0;
+ width: 2rem;
+ height: 2rem;
+ background: var(--red);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #fff;
+ font-size: 0.875rem;
+ flex-shrink: 0;
 }
+
 
 /* ─── Page 01: Map wrappers ───────────────── */
 .map-wrapper {
-  border: 10px solid var(--red);
-  overflow: hidden;
-  margin-bottom: 16px;
-  height: 320px;
+ border: var(--border-thick) solid var(--red);
+ overflow: hidden;
+ margin-bottom: 1rem;
+ height: 20rem;
 }
 
-/* Make the LitElement map component fill its wrapper */
+
 forkyeah-map {
-  --map-width: 100%;
-  --map-height: 100%;
-  display: block;
-  width: 100%;
-  height: 100%;
+ --map-width: 100%;
+ --map-height: 100%;
+ display: block;
+ width: 100%;
+ height: 100%;
 }
+
 
 .map-placeholder {
-  border: 10px solid var(--red);
-  height: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ border: var(--border-thick) solid var(--red);
+ height: 15rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
+
 .map-placeholder span {
-  font-family: var(--font);
-  font-weight: 900;
-  font-size: 42px;
-  color: var(--red);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+ font-family: var(--font);
+ font-weight: 900;
+ font-size: 2.625rem;
+ color: var(--red);
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
 }
+
 
 /* ─── Page 02: Restaurant rows ────────────── */
 .restaurants {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+ display: flex;
+ flex-direction: column;
+ gap: 0.875rem;
 }
 
+
+/* FIX: fixed height (not min-height) so opening a dropdown
+   never pushes the rows below it downward */
 .r-row {
-  position: relative;
-  height: 200px;
+ position: relative;
+ height: 12.5rem;           /* fixed — dropdowns float over content */
+ overflow: visible;         /* let the absolute dropdown escape the row */
 }
+
 
 .r-photo {
-  position: absolute;
-  border: 3px solid var(--red);
-  overflow: hidden;
-  width: 210px;
-  height: 200px;
+ position: absolute;
+ border: 3px solid var(--red);
+ overflow: hidden;
+ width: 13.125rem;
+ height: 12.5rem;
+ z-index: 2;
 }
+
 
 .r-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ display: block;
+ transition: transform 0.4s ease;
 }
+
 
 .r-photo:hover img {
-  transform: scale(1.04);
+ transform: scale(1.04);
 }
+
 
 /* Photo on right, label on left */
-.row-right .r-photo { right: 0; top: 0; }
-.row-right .r-label { left: 60px; top: 50%; transform: translateY(-50%); }
+.row-right .r-photo {
+ right: 0;
+ top: 0;
+}
+
 
 /* Photo on left, label on right */
-.row-left .r-photo  { left: 0; top: 4px; }
-.row-left .r-label  { right: 20px; top: 50%; transform: translateY(-50%); }
+.row-left .r-photo {
+ left: 0;
+ top: 4px;
+}
+
+
+.r-info-box {
+ position: absolute;
+ display: flex;
+ flex-direction: column;
+ z-index: 4;
+ overflow: visible;         /* FIX: let absolute dropdown escape */
+}
+
+
+.r-info-left {
+ left: 2rem;
+ top: 50%;
+ transform: translateY(-50%);
+ align-items: flex-start;
+ width: 18rem;
+}
+
+
+.r-info-right {
+ right: 1.25rem;
+ top: 50%;
+ transform: translateY(-50%);
+ align-items: flex-end;
+ width: 18rem;
+}
+
 
 .r-label {
-  position: absolute;
-  border: 2px solid var(--red);
-  background: #fff;
-  color: var(--red);
-  font-weight: 600;
-  font-size: 24px;
-  letter-spacing: 0.13em;
-  padding: 5px 13px 5px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 2;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+ position: relative;
+ border: 2px solid var(--red);
+ background: #fff;
+ color: var(--red);
+ font-weight: 600;
+ font-size: 1.5rem;
+ letter-spacing: 0.13em;
+ padding: 0.3125em 0.8125em;
+ text-transform: uppercase;
+ white-space: nowrap;
+ display: inline-flex;
+ align-items: center;
+ gap: 0.5em;
+ z-index: 5;
+ cursor: pointer;
+ transition: background 0.25s ease, color 0.25s ease;
+ font-family: var(--font);
 }
 
-.r-label:hover {
-  background: var(--red);
-  color: #fff;
+
+.r-label:hover,
+.r-label.active {
+ background: var(--red);
+ color: #fff;
 }
+
 
 .r-arr {
-  font-size: 9px;
+ font-size: 0.5625em;
 }
+
+
+/* FIX: absolutely positioned so it overlays the page below
+   instead of pushing it down */
+.r-dropdown {
+ position: absolute;       /* FIX: was in flow; now floats */
+ top: 100%;
+ left: 0;
+ width: 100%;
+ z-index: 20;
+
+ /* hidden state */
+ max-height: 0;
+ overflow: hidden;
+ opacity: 0;
+ pointer-events: none;
+ transform: translateY(-6px);
+ transition:
+   max-height 0.35s ease,
+   opacity 0.3s ease,
+   transform 0.3s ease,
+   padding 0.3s ease;
+
+ background: #fff;
+ border: 2px solid var(--red);
+ color: var(--red);
+ font-size: 0.95rem;
+ font-weight: 600;
+ line-height: 1.4;
+ letter-spacing: 0.03em;
+ padding: 0 0.875rem;
+}
+
+
+/* right-side label: align dropdown to right edge */
+.r-info-right .r-dropdown {
+ left: auto;
+ right: 0;
+ text-align: left;
+}
+
+
+.r-dropdown.open {
+ max-height: 220px;
+ opacity: 1;
+ pointer-events: auto;
+ transform: translateY(0);
+ padding: 0.875rem;
+ margin-top: 0.2rem;
+}
+
+
+.r-dropdown-title {
+ font-size: 1.1rem;
+ font-weight: 700;
+ letter-spacing: 0.08em;
+ margin-bottom: 0.5rem;
+ text-transform: uppercase;
+}
+
+
+.r-dropdown-line + .r-dropdown-line {
+ margin-top: 0.35rem;
+}
+
 
 /* Connector lines — injected by JS */
 .r-line {
-  position: absolute;
-  height: 2px;
-  background: var(--red);
-  z-index: 1;
+ position: absolute;
+ height: 2px;
+ background: var(--red);
+ z-index: 1;
 }
 
+
 .r-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--red);
-  border-radius: 50%;
-  z-index: 3;
-  transform: translate(-50%, -50%);
+ position: absolute;
+ width: 0.5rem;
+ height: 0.5rem;
+ background: var(--red);
+ border-radius: 50%;
+ z-index: 3;
+ transform: translate(-50%, -50%);
 }
+
 
 /* ─── Page 03: Globe section ──────────────── */
 .globe-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 16px 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 1.25rem;
+ padding: 1rem 0;
 }
+
 
 .globe-col-labels {
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
-  align-items: flex-end;
+ display: flex;
+ flex-direction: column;
+ gap: 1.625rem;
+ align-items: flex-end;
 }
+
 
 .globe-col-right {
-  align-items: flex-start;
+ align-items: flex-start;
 }
+
+
+/* FIX: relative so the absolute dropdown anchors to it */
+.g-info-box {
+ position: relative;
+ width: 100%;
+}
+
 
 .g-label {
-  border: 4px solid var(--red);
-  background: #fff;
-  color: var(--red);
-  font-weight: 600;
-  font-size: 24px;
-  letter-spacing: 0.12em;
-  padding: 5px 13px 5px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+ border: var(--border-thin) solid var(--red);
+ background: #fff;
+ color: var(--red);
+ font-weight: 600;
+ font-size: 1.5rem;
+ letter-spacing: 0.12em;
+ padding: 0.3125em 0.8125em;
+ text-transform: uppercase;
+ white-space: nowrap;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 0.5em;
+ cursor: pointer;
+ transition: background 0.25s ease, color 0.25s ease;
+ width: 100%;
+ font-family: var(--font);
 }
 
-.g-label:hover {
-  background: var(--red);
-  color: #fff;
+
+.g-label:hover,
+.g-label.active {
+ background: var(--red);
+ color: #fff;
 }
+
+
+/* FIX: absolutely positioned so it overlays the globe/page
+   instead of pushing the globe section around */
+.g-dropdown {
+ position: absolute;       /* FIX: was in flow; now floats */
+ top: 100%;
+ left: 0;
+ width: 100%;
+ z-index: 20;
+
+ /* hidden state */
+ max-height: 0;
+ overflow: hidden;
+ opacity: 0;
+ pointer-events: none;
+ transform: translateY(-6px);
+ transition:
+   max-height 0.35s ease,
+   opacity 0.3s ease,
+   transform 0.3s ease,
+   padding 0.3s ease;
+
+ background: #fff;
+ border: 2px solid var(--red);
+ border-top: none;
+ color: var(--red);
+ font-size: 1rem;
+ font-weight: 600;
+ letter-spacing: 0.04em;
+ line-height: 1.4;
+ padding: 0 0.875rem;
+}
+
+
+.g-dropdown.open {
+ max-height: 220px;
+ opacity: 1;
+ pointer-events: auto;
+ transform: translateY(0);
+ padding: 0.875rem;
+}
+
 
 /* ─── Page 03: Restaurant cards ───────────── */
 .restaurant-cards {
-  display: flex;
-  gap: 12px;
+ display: flex;
+ gap: 0.75rem;
 }
+
 
 .rest-card {
-  flex: 1;
-  border: 8px solid var(--red); 
-  overflow: hidden;
-  background: #ffffff; 
+ flex: 1;
+ border: var(--border-mid) solid var(--red);
+ overflow: hidden;
+ background: #ffffff;
 }
 
-/* image stays same */
+
 .rest-card-photo {
-  width: 100%;
-  height: 200px; 
-  overflow: hidden;
+ width: 100%;
+ height: 12.5rem;
+ overflow: hidden;
 }
 
-/* ── Actions row (price + menu pills) ── */
+
+.rest-card-photo img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ display: block;
+ transition: transform 0.4s ease;
+}
+
+
+.rest-card:hover .rest-card-photo img {
+ transform: scale(1.04);
+}
+
+
+/* ── Actions row ── */
 .rest-card-actions {
-  display: flex;
-  justify-content: center; /* center pills */
-  gap: 24px;
-  padding: 8px 10px 0px;
+ display: flex;
+ justify-content: center;
+ gap: 1.5rem;
+ padding: 0.5em 0.625em 0;
 }
 
-/* pill buttons now outlined instead of filled */
+
 .pill-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border: 4px solid var(--red);
-  background: transparent;
-  color: var(--red);
-  font-family: var(--font);
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 10px 36px;
-  border-radius: 40px;
-  cursor: pointer;
-  transition: all 0.5s ease;
+ display: flex;
+ align-items: center;
+ gap: 0.5em;
+ border: var(--border-thin) solid var(--red);
+ background: transparent;
+ color: var(--red);
+ font-family: var(--font);
+ font-weight: 600;
+ font-size: 1.125rem;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ padding: 0.556em 2em;
+ border-radius: 2.5em;
+ cursor: pointer;
+ transition: all 0.5s ease;
 }
+
 
 .pill-btn:hover {
-  background: var(--red);
-  color: #fff;
+ background: var(--red);
+ color: #fff;
 }
 
-/* red dot inside pills */
+
 .pill-dot {
-  width: 14px;
-  height: 14px;
-  background: var(--red);
-  border-radius: 50%;
+ width: 0.875rem;
+ height: 0.875rem;
+ background: var(--red);
+ border-radius: 50%;
 }
 
-/* ── Restaurant name (big center pill) ── */
+
 .rest-card-name {
-  display: block;
-  margin: 12px auto 12px;
-  font-weight: 600;
-  font-size: 24px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #fff;
-  background: var(--red);
-  padding: 16px;
-  border-radius: 40px; 
-  text-align: center;
+ display: block;
+ margin: 0.75rem auto;
+ font-weight: 600;
+ font-size: 1.5rem;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ color: #fff;
+ background: var(--red);
+ padding: 0.667em 1em;
+ border-radius: 2.5em;
+ text-align: center;
 }
 
-/* ── Address ── */
+
 .rest-card-addr {
-  text-align: center;
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--red);
-  padding: 4px 0 12px;
+ text-align: center;
+ font-weight: 700;
+ font-size: 1.125rem;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--red);
+ padding: 0.25em 0 0.75em;
 }
+
 
 /* ─── View More button ────────────────────── */
 .view-more-btn {
-  margin-top: 16px;
-  border: 8px solid var(--red);
-  color: var(--red);
-  font-family: var(--font);
-  font-weight: 600;
-  font-size: 24px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+ margin-top: 1rem;
+ border: var(--border-mid) solid var(--red);
+ color: var(--red);
+ font-family: var(--font);
+ font-weight: 600;
+ font-size: 1.5rem;
+ letter-spacing: 0.14em;
+ text-transform: uppercase;
+ text-align: center;
+ padding: 0.417em 0.667em;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 1rem;
+ cursor: pointer;
+ transition: background 0.15s, color 0.15s;
 }
 
+
 .view-more-btn:hover {
-  background: var(--red);
-  color: #fff;
+ background: var(--red);
+ color: #fff;
 }
 
 
 /* ═══════════════════════════════════════════
-   MOBILE RESPONSIVE — max-width: 600px
-   (and intermediate tablet at 760px)
+  MOBILE RESPONSIVE
 ═══════════════════════════════════════════ */
 
-/* ─── Tablet: card fills screen ───────────── */
 @media (max-width: 800px) {
-  body {
-    padding: 16px 10px 40px;
-    gap: 20px;
-  }
+ body {
+   padding: 1rem 0.625rem 2.5rem;
+   gap: 1.25rem;
+ }
 
-  .page-card {
-    border-width: 6px;
-  }
+ .page-card {
+   border-width: 0.375rem;
+ }
 
-  .content {
-    padding: 16px 16px 22px;
-  }
+ .content {
+   padding: 1rem 1rem 1.375rem;
+ }
 }
 
-/* ─── Mobile: full layout overhaul ────────── */
 @media (max-width: 600px) {
 
-  /* ── Page card ── */
-  .page-card {
-    border-width: 5px;
-  }
+ .page-card {
+   border-width: 0.3125rem;
+ }
 
-  .content {
-    padding: 12px 12px 18px;
-  }
+ .content {
+   padding: 0.75rem 0.75rem 1.125rem;
+ }
 
-  /* ── Header ── */
-  .title-block h1 {
-    font-size: 28px;
-    letter-spacing: 0.04em;
-  }
+ .title-block h1 {
+   font-size: 1.75rem;
+   letter-spacing: 0.04em;
+ }
 
-  .sub-block p {
-    font-size: 20px;
-    letter-spacing: 0.04em;
-  }
+ .sub-block p {
+   font-size: 1.25rem;
+   letter-spacing: 0.04em;
+ }
 
-  .loc-badge {
-    font-size: 16px;
-    letter-spacing: 0.08em;
-  }
+ .loc-badge {
+   font-size: 1rem;
+   letter-spacing: 0.08em;
+ }
 
-  .page-num .n {
-    font-size: 52px;
-  }
+ .page-num .n {
+   font-size: 3.25rem;
+ }
 
-  .page-num .p {
-    font-size: 13px;
-    letter-spacing: 0.2em;
-  }
+ .page-num .p {
+   font-size: 0.8125rem;
+   letter-spacing: 0.2em;
+ }
 
-  /* ── Divider ── */
-  .dash {
-    border-top-width: 6px;
-  }
+ .dash {
+   border-top-width: 0.375rem;
+ }
 
-  /* ── Page 01: Maps ── */
-  .map-wrapper {
-    height: 220px;
-    border-width: 5px;
-    margin-bottom: 12px;
-  }
+ .map-wrapper {
+   height: 13.75rem;
+   border-width: 0.3125rem;
+   margin-bottom: 0.75rem;
+ }
 
-  .map-placeholder {
-    height: 140px;
-    border-width: 5px;
-  }
+ .map-placeholder {
+   height: 8.75rem;
+   border-width: 0.3125rem;
+ }
 
-  .map-placeholder span {
-    font-size: 24px;
-  }
+ .map-placeholder span {
+   font-size: 1.5rem;
+ }
 
-  /* ── Page 02: Restaurant rows ── */
-  .r-row {
-    height: 130px;
-  }
+ .r-row {
+   height: 8.125rem;
+ }
 
-  .r-photo {
-    width: 130px;
-    height: 130px;
-  }
+ .r-photo {
+   width: 8.125rem;
+   height: 8.125rem;
+ }
 
-  /* Keep layout: photo right / label left */
-  .row-right .r-label {
-    left: 8px;
-    font-size: 15px;
-    letter-spacing: 0.06em;
-    padding: 4px 8px;
-  }
+ .r-info-left {
+   left: 0.5rem;
+   width: 12rem;
+ }
 
-  .row-left .r-label {
-    right: 8px;
-    font-size: 15px;
-    letter-spacing: 0.06em;
-    padding: 4px 8px;
-  }
+ .r-info-right {
+   right: 0.5rem;
+   width: 12rem;
+ }
 
-  /* ── Page 03: Globe section ── */
-  .globe-section {
-    flex-direction: column;
-    gap: 12px;
-    padding: 10px 0;
-  }
+ .r-label {
+   font-size: 0.9375rem;
+   letter-spacing: 0.06em;
+   padding: 0.267em 0.533em;
+ }
 
-  .globe-col-labels {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    align-items: center;
-  }
+ .globe-section {
+   flex-direction: column;
+   gap: 0.75rem;
+   padding: 0.625rem 0;
+ }
 
-  .globe-col-right {
-    align-items: center;
-  }
+ .globe-col-labels {
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 0.5rem;
+   align-items: center;
+ }
 
-  .g-label {
-    font-size: 15px;
-    letter-spacing: 0.07em;
-    padding: 4px 10px;
-    border-width: 3px;
-  }
+ .globe-col-right {
+   align-items: center;
+ }
 
-  /* ── Page 03: Restaurant cards — stack ── */
-  .restaurant-cards {
-    flex-direction: column;
-    gap: 12px;
-  }
+ .g-label {
+   font-size: 0.9375rem;
+   letter-spacing: 0.07em;
+   padding: 0.267em 0.667em;
+   border-width: 3px;
+ }
 
-  .rest-card-photo {
-    height: 160px;
-  }
+ .restaurant-cards {
+   flex-direction: column;
+   gap: 0.75rem;
+ }
 
-  /* ── View More ── */
-  .view-more-btn {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    padding: 9px 12px;
-    gap: 8px;
-  }
+ .rest-card-photo {
+   height: 10rem;
+ }
+
+ .view-more-btn {
+   font-size: 0.875rem;
+   letter-spacing: 0.1em;
+   padding: 0.643em 0.857em;
+   gap: 0.5rem;
+ }
 }
